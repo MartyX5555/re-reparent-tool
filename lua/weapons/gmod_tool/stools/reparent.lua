@@ -19,7 +19,7 @@ if CLIENT then
 	language.Add( "tool.reparent.desc", "A tool designed to quickly move the children of a prop to another." )
 	language.Add( "tool.reparent.left", "Select the current parent root you want to change." )
 	language.Add( "tool.reparent.left_sec", "Now, select the new parent root." )
-	language.Add( "tool.reparent.left_thi", "Select a new parent root for the children." )
+	language.Add( "tool.reparent.left_thi", "If you want, select a new parent root for the children." )
 	language.Add( "tool.reparent.right", "Apply the changes." )
 	language.Add( "tool.reparent.reload", "Clear selection." )
 
@@ -121,7 +121,7 @@ do
 			if CLIENT then return true end
 
 			if IsValid(self.DP.OldParent) and IsValid(self.DP.NewParent) then
-				print("Repareting....")
+				self:GetOwner():SendLua( "GAMEMODE:AddNotify('Re-parent completed!',NOTIFY_GENERIC,7);" ) -- lazy moment
 				ApplyReparent( self.DP.OldParent, self.DP.NewParent, self )
 			end
 
@@ -151,7 +151,7 @@ do
 
 		function TOOL.BuildCPanel( panel )
 
-			panel:Help("A tool to replace parent rool easily.")
+			panel:Help("#tool.reparent.desc")
 
 		end
 
