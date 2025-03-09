@@ -8,8 +8,8 @@ if CLIENT then
 	TOOL.Information = {
 
 		{ name = "left", icon = "gui/lmb.png",  stage = 0, op = 0 },
-		{ name = "left_sec", con = "gui/lmb.png", stage = 1, op = 0 },
-		{ name = "left_thi", con = "gui/lmb.png", stage = 1, op = 1 },
+		{ name = "left_sec", icon = "gui/lmb.png", stage = 1, op = 0 },
+		{ name = "left_thi", icon = "gui/lmb.png", stage = 1, op = 1 },
 		{ name = "right", icon = "gui/rmb.png", stage = 1, op = 1 },
 		{ name = "reload", icon = "gui/r.png" },
 
@@ -31,7 +31,7 @@ do
 	local function IsReallyValid( ent )
 
 		if not IsValid(ent) then return false end
-		if ent:IsPlayer() then return false end
+		if ent:IsPlayer() or ent:IsNPC() or ent:IsNextBot() then return false end
 		if not IsValid(ent:GetPhysicsObject()) then return false end
 
 		return true
